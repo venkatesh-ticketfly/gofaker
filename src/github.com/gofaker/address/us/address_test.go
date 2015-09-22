@@ -2,8 +2,8 @@ package us
 
 import (
 	"fmt"
-	"gofaker/common/test"
-	"gofaker/name"
+	"github.com/gofaker/common/test"
+	"github.com/gofaker/name"
 	"testing"
 )
 

@@ -1,7 +1,7 @@
 package test
 
 import (
-	"gofaker/common"
+	"github.com/gofaker/common"
 )
 
 type testSource struct {

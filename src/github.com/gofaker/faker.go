@@ -1,8 +1,8 @@
 package gofaker
 
 import (
-	"gofaker/address/us"
-	"gofaker/name"
+	"github.com/gofaker/address/us"
+	"github.com/gofaker/name"
 )
 
 var UsNamer name.UsNamer = name.NewUsNamer()

@@ -2,8 +2,8 @@ package us
 
 import (
 	"fmt"
-	"gofaker/common"
-	"gofaker/name"
+	"github.com/gofaker/common"
+	"github.com/gofaker/name"
 )
 
 const (

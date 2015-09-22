@@ -1,7 +1,7 @@
 package name
 
 import (
-	"gofaker/common/test"
+	"github.com/gofaker/common/test"
 	"testing"
 	"fmt"
 )

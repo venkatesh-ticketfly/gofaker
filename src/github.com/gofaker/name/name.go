@@ -2,7 +2,7 @@ package name
 
 import (
 	"fmt"
-	"gofaker/common"
+	"github.com/gofaker/common"
 )
 
 var prefixes = []string{"Mr.", "Mrs.", "Ms.", "Miss", "Dr."}
