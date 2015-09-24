@@ -1,14 +1,14 @@
-package us
+package address
 
 import (
 	"fmt"
 	"github.com/gofaker/common/test"
-	"github.com/gofaker/name"
+	"github.com/gofaker/us/name"
 	"testing"
 )
 
 func TestZipCodeReturns5DigitFormat(t *testing.T) {
-	addr := Address{name.UsNamer{}, test.ConstantRand(0)}
+	addr := Address{&name.Namer{}, test.ConstantRand(0)}
 
 	zipCode := addr.ZipCode()
 	if zipCode != "00000" {
@@ -17,7 +17,7 @@ func TestZipCodeReturns5DigitFormat(t *testing.T) {
 }
 
 func TestZipCodeReturns5DigitHyphen4DigitFormat(t *testing.T) {
-	addr := Address{name.UsNamer{}, test.ConstantRand(1)}
+	addr := Address{&name.Namer{}, test.ConstantRand(1)}
 
 	zipCode := addr.ZipCode()
 	if zipCode != "11111-1111" {

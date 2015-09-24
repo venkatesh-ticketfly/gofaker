@@ -1,9 +1,9 @@
-package us
+package address
 
 import (
 	"fmt"
 	"github.com/gofaker/common"
-	"github.com/gofaker/name"
+	"github.com/gofaker/us/name"
 )
 
 const (
@@ -14,21 +14,21 @@ var zipFormats = []string{"#####", "#####-####"}
 var address2Prefixes = []string{"Apt. ###", "Suite ###"}
 
 type Address struct {
-	usNamer name.UsNamer
+	namer *name.Namer
 	rand    *common.Rand
 }
 
-func NewAddress(UsNamer name.UsNamer) Address {
-	return Address{UsNamer, common.Default()}
+func NewAddress(namer *name.Namer) *Address {
+	return &Address{namer, common.Default()}
 }
 
 func (addr *Address) Address1() string {
 	streetName := ""
 	switch addr.rand.Intn(2) {
 	case 0:
-		streetName = addr.usNamer.LastName()
+		streetName = addr.namer.LastName()
 	default:
-		streetName = addr.usNamer.FirstName()
+		streetName = addr.namer.FirstName()
 	}
 
 	streetNum := common.Numerify("####", numerifyPattern, addr.rand)
@@ -47,14 +47,14 @@ func (addr *Address) Address2() string {
 func (addr *Address) City() string {
 	switch addr.rand.Intn(4) {
 	case 0:
-		return fmt.Sprintf("%s %s%s", addr.cityPrefix(), addr.usNamer.FirstName(),
+		return fmt.Sprintf("%s %s%s", addr.cityPrefix(), addr.namer.FirstName(),
 			addr.citySuffix())
 	case 1:
-		return fmt.Sprintf("%s %s", addr.cityPrefix(), addr.usNamer.FirstName())
+		return fmt.Sprintf("%s %s", addr.cityPrefix(), addr.namer.FirstName())
 	case 2:
-		return fmt.Sprint(addr.usNamer.FirstName(), addr.citySuffix())
+		return fmt.Sprint(addr.namer.FirstName(), addr.citySuffix())
 	default:
-		return fmt.Sprint(addr.usNamer.LastName(), addr.citySuffix())
+		return fmt.Sprint(addr.namer.LastName(), addr.citySuffix())
 	}
 }
 

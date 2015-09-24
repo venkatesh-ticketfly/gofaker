@@ -36,3 +36,27 @@ func TestNumerifyPatternWithNonReplacebleRune(t *testing.T) {
 		}
 	}
 }
+
+func BenchmarkStringsReplace(b *testing.B) {
+	str := "Hello World My World"
+	res := strings.Replace(str, " ", "", -1)
+	if res != "HelloWorldMyWorld" {
+		b.Fatal(res)
+	}
+}
+
+func BenchmarkStringsMap(b *testing.B) {
+	str := "Hello World My World"
+	res := strings.Map(func(r rune) rune {
+		switch r {
+		case rune(32):
+			return rune(-1)
+		default:
+			return r
+		}
+	},
+		str)
+	if res != "HelloWorldMyWorld" {
+		b.Fatal(res)
+	}
+}
