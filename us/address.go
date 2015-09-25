@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/gofaker/common"
+	"github.com/venkatesh-ticketfly/gofaker/common"
 )
 
 const (

@@ -1,9 +1,10 @@
 package us
 
 import (
-	"github.com/gofaker/common/test"
-	"testing"
 	"fmt"
+	"testing"
+
+	"github.com/venkatesh-ticketfly/gofaker/common/test"
 )
 
 func TestPrefixFirstNameLastNameWhenRandom0(t *testing.T) {

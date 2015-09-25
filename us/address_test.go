@@ -2,8 +2,9 @@ package us
 
 import (
 	"fmt"
-	"github.com/gofaker/common/test"
 	"testing"
+
+	"github.com/venkatesh-ticketfly/gofaker/common/test"
 )
 
 func TestZipCodeReturns5DigitFormat(t *testing.T) {

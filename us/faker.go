@@ -1,6 +1,6 @@
 package us
 
-import "github.com/gofaker/common"
+import "github.com/venkatesh-ticketfly/gofaker/common"
 
 type Us struct {
 	Namer   *Namer
