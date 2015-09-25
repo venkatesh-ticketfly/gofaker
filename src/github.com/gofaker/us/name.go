@@ -1,4 +1,4 @@
-package name
+package us
 
 import (
 	"fmt"
@@ -6,17 +6,9 @@ import (
 	"github.com/gofaker/common"
 )
 
-var prefixes = []string{"Mr.", "Mrs.", "Ms.", "Miss", "Dr."}
+var namePrefixes = []string{"Mr.", "Mrs.", "Ms.", "Miss", "Dr."}
 
-var suffixes = []string{"Jr.", "Sr.", "I", "II", "III", "IV", "V", "MD", "DDS", "PhD", "DVM"}
-
-func NewNamer() *Namer {
-	return New(common.Default())
-}
-
-func New(rand *common.Rand) *Namer {
-	return &Namer{rand}
-}
+var nameSuffixes = []string{"Jr.", "Sr.", "I", "II", "III", "IV", "V", "MD", "DDS", "PhD", "DVM"}
 
 type Namer struct {
 	rand *common.Rand
@@ -35,11 +27,11 @@ func (u *Namer) LastName() string {
 }
 
 func (u *Namer) Prefix() string {
-	return u.rand.Choose(prefixes)
+	return u.rand.Choose(namePrefixes)
 }
 
 func (u *Namer) Suffix() string {
-	return u.rand.Choose(suffixes)
+	return u.rand.Choose(nameSuffixes)
 }
 
 func (u *Namer) Name() string {

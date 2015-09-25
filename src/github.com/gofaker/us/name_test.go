@@ -1,4 +1,4 @@
-package name
+package us
 
 import (
 	"github.com/gofaker/common/test"
@@ -9,7 +9,7 @@ import (
 func TestPrefixFirstNameLastNameWhenRandom0(t *testing.T) {
 	namer := Namer{test.ConstantRand(0)}
 
-	expectedName := fmt.Sprintf("%s %s %s", prefixes[0], firstNames[0], lastNames[0])
+	expectedName := fmt.Sprintf("%s %s %s", namePrefixes[0], firstNames[0], lastNames[0])
 	if name := namer.Name(); name != expectedName {
 		t.Fatal(name, "should have been", expectedName)
 	}
@@ -18,7 +18,7 @@ func TestPrefixFirstNameLastNameWhenRandom0(t *testing.T) {
 func TestFirstNameLastNameSuffixWhenRandom1(t *testing.T) {
 	namer := Namer{test.ConstantRand(1)}
 
-	expectedName := fmt.Sprintf("%s %s %s", firstNames[1], lastNames[1], suffixes[1])
+	expectedName := fmt.Sprintf("%s %s %s", firstNames[1], lastNames[1], nameSuffixes[1])
 	if name := namer.Name(); name != expectedName {
 		t.Fatal(name, "should have been", expectedName)
 	}

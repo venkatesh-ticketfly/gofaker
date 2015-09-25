@@ -1,9 +1,8 @@
-package address
+package us
 
 import (
 	"fmt"
 	"github.com/gofaker/common"
-	"github.com/gofaker/us/name"
 )
 
 const (
@@ -14,12 +13,8 @@ var zipFormats = []string{"#####", "#####-####"}
 var address2Prefixes = []string{"Apt. ###", "Suite ###"}
 
 type Address struct {
-	namer *name.Namer
+	namer *Namer
 	rand    *common.Rand
-}
-
-func NewAddress(namer *name.Namer) *Address {
-	return &Address{namer, common.Default()}
 }
 
 func (addr *Address) Address1() string {

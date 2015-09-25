@@ -1,4 +1,4 @@
-package internet
+package us
 
 import (
 	"fmt"
@@ -6,20 +6,14 @@ import (
 	"unicode"
 
 	"github.com/gofaker/common"
-	"github.com/gofaker/us/company"
-	"github.com/gofaker/us/name"
 )
 
 var domainSuffixes = []string{"com", "org", "us", "ca", "biz", "info"}
 
 type Email struct {
-	company *company.Company
-	namer   *name.Namer
+	company *Company
+	namer   *Namer
 	rand    *common.Rand
-}
-
-func NewEmail(company *company.Company, namer *name.Namer) *Email {
-	return &Email{company, namer, common.Default()}
 }
 
 func (e *Email) UserName() string {

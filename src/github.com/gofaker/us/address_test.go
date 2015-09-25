@@ -1,14 +1,13 @@
-package address
+package us
 
 import (
 	"fmt"
 	"github.com/gofaker/common/test"
-	"github.com/gofaker/us/name"
 	"testing"
 )
 
 func TestZipCodeReturns5DigitFormat(t *testing.T) {
-	addr := Address{&name.Namer{}, test.ConstantRand(0)}
+	addr := Address{&Namer{}, test.ConstantRand(0)}
 
 	zipCode := addr.ZipCode()
 	if zipCode != "00000" {
@@ -17,7 +16,7 @@ func TestZipCodeReturns5DigitFormat(t *testing.T) {
 }
 
 func TestZipCodeReturns5DigitHyphen4DigitFormat(t *testing.T) {
-	addr := Address{&name.Namer{}, test.ConstantRand(1)}
+	addr := Address{&Namer{}, test.ConstantRand(1)}
 
 	zipCode := addr.ZipCode()
 	if zipCode != "11111-1111" {
@@ -27,7 +26,7 @@ func TestZipCodeReturns5DigitHyphen4DigitFormat(t *testing.T) {
 
 func TestCityNameLongForm(t *testing.T) {
 	rand := test.ConstantRand(0)
-	namer := name.New(rand)
+	namer := &Namer{rand}
 	addr := Address{namer, rand}
 
 	city := addr.City()
@@ -39,7 +38,7 @@ func TestCityNameLongForm(t *testing.T) {
 
 func TestCityNameWithPrefixOnly(t *testing.T) {
 	rand := test.ConstantRand(1)
-	namer := name.New(rand)
+	namer := &Namer{rand}
 	addr := Address{namer, rand}
 
 	city := addr.City()
@@ -51,7 +50,7 @@ func TestCityNameWithPrefixOnly(t *testing.T) {
 
 func TestCityNameWithSuffixOnly(t *testing.T) {
 	rand := test.ConstantRand(2)
-	namer := name.New(rand)
+	namer := &Namer{rand}
 	addr := Address{namer, rand}
 
 	city := addr.City()
@@ -63,7 +62,7 @@ func TestCityNameWithSuffixOnly(t *testing.T) {
 
 func TestCityLastNameWithSuffixOnly(t *testing.T) {
 	rand := test.ConstantRand(3)
-	namer := name.New(rand)
+	namer := &Namer{rand}
 	addr := Address{namer, rand}
 
 	city := addr.City()
