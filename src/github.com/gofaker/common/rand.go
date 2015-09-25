@@ -2,21 +2,31 @@ package common
 
 import (
 	"math/rand"
-	"time"
+	"sync"
 )
 
-type Rand struct {
-	*rand.Rand
+type lockedSource struct {
+	lk  sync.Mutex
+	src rand.Source
 }
 
-func Default() *Rand {
-	return New(rand.NewSource(time.Now().Unix() + time.Now().UnixNano()))
+func (r *lockedSource) Int63() (n int64) {
+	r.lk.Lock()
+	n = r.src.Int63()
+	r.lk.Unlock()
+	return
 }
 
-func New(src rand.Source) *Rand {
-	return &Rand{rand.New(src)}
+func (r *lockedSource) Seed(seed int64) {
+	r.lk.Lock()
+	r.src.Seed(seed)
+	r.lk.Unlock()
 }
 
-func (r *Rand) Choose(strSlice []string) string {
-	return strSlice[r.Intn(len(strSlice))]
+func NewRand() *rand.Rand {
+	return rand.New(&lockedSource{src: rand.NewSource(1)})
+}
+
+func Choose(strSlice []string, rand *rand.Rand) string {
+	return strSlice[rand.Intn(len(strSlice))]
 }

@@ -3,14 +3,15 @@ package us
 import "github.com/gofaker/common"
 
 type Us struct {
-	Namer *Namer
+	Namer   *Namer
 	Address *Address
 	Company *Company
-	Email *Email
+	Email   *Email
 }
 
 func NewUs() *Us {
-	namer := &Namer{common.Default()}
-	company :=  &Company{namer, common.Default()}
-	return &Us{namer, &Address{namer, common.Default()}, company, &Email{company, namer, common.Default()}}
+	rand := common.NewRand()
+	namer := &Namer{rand}
+	company := &Company{namer, rand}
+	return &Us{namer, &Address{namer, rand}, company, &Email{company, namer, rand}}
 }

@@ -2,6 +2,7 @@ package us
 
 import (
 	"fmt"
+	"math/rand"
 	"strings"
 	"unicode"
 
@@ -13,7 +14,7 @@ var domainSuffixes = []string{"com", "org", "us", "ca", "biz", "info"}
 type Email struct {
 	company *Company
 	namer   *Namer
-	rand    *common.Rand
+	rand    *rand.Rand
 }
 
 func (e *Email) UserName() string {
@@ -27,7 +28,7 @@ func (e *Email) UserName() string {
 
 func (e *Email) Email() string {
 	domainWord := formatDomainWord(e.company.Name())
-	domainSuffix := e.rand.Choose(domainSuffixes)
+	domainSuffix := common.Choose(domainSuffixes, e.rand)
 	return fmt.Sprintf("%s@%s.%s", e.UserName(), domainWord, domainSuffix)
 }
 

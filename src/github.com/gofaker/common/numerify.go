@@ -1,8 +1,11 @@
 package common
 
-import "strconv"
+import (
+	"math/rand"
+	"strconv"
+)
 
-func Numerify(pattern string, numerifyRune rune, rand *Rand) string {
+func Numerify(pattern string, numerifyRune rune, rand *rand.Rand) string {
 	result := []byte{}
 	for _, char := range pattern {
 		if char == numerifyRune {

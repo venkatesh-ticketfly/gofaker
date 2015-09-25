@@ -2,6 +2,8 @@ package us
 
 import (
 	"fmt"
+	"math/rand"
+
 	"github.com/gofaker/common"
 )
 
@@ -14,7 +16,7 @@ var address2Prefixes = []string{"Apt. ###", "Suite ###"}
 
 type Address struct {
 	namer *Namer
-	rand    *common.Rand
+	rand  *rand.Rand
 }
 
 func (addr *Address) Address1() string {
@@ -27,7 +29,7 @@ func (addr *Address) Address1() string {
 	}
 
 	streetNum := common.Numerify("####", numerifyPattern, addr.rand)
-	return fmt.Sprint(streetNum, " ", streetName, " ", addr.rand.Choose(streetSuffixes))
+	return fmt.Sprint(streetNum, " ", streetName, " ", common.Choose(streetSuffixes, addr.rand))
 }
 
 func (addr *Address) Address2() string {
@@ -35,7 +37,8 @@ func (addr *Address) Address2() string {
 	case 0:
 		return ""
 	default:
-		return common.Numerify(addr.rand.Choose(address2Prefixes), numerifyPattern, addr.rand)
+		addr2Prefix := common.Choose(address2Prefixes, addr.rand)
+		return common.Numerify(addr2Prefix, numerifyPattern, addr.rand)
 	}
 }
 
@@ -54,21 +57,22 @@ func (addr *Address) City() string {
 }
 
 func (addr *Address) State() string {
-	return addr.rand.Choose(states)
+	return common.Choose(states, addr.rand)
 }
 
 func (addr *Address) StateAbbr() string {
-	return addr.rand.Choose(stateAbbrs)
+	return common.Choose(stateAbbrs, addr.rand)
 }
 
 func (addr *Address) ZipCode() string {
-	return common.Numerify(addr.rand.Choose(zipFormats), numerifyPattern, addr.rand)
+	zipFormat := common.Choose(zipFormats, addr.rand)
+	return common.Numerify(zipFormat, numerifyPattern, addr.rand)
 }
 
 func (addr *Address) cityPrefix() string {
-	return addr.rand.Choose(cityPrefixes)
+	return common.Choose(cityPrefixes, addr.rand)
 }
 
 func (addr *Address) citySuffix() string {
-	return addr.rand.Choose(citySuffixes)
+	return common.Choose(citySuffixes, addr.rand)
 }

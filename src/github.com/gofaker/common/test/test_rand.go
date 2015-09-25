@@ -1,8 +1,6 @@
 package test
 
-import (
-	"github.com/gofaker/common"
-)
+import "math/rand"
 
 type testSource struct {
 	constant int64
@@ -13,15 +11,9 @@ func (ts *testSource) Int63() int64 {
 }
 
 func (ts *testSource) Seed(seed int64) {
-	ts.constant = seed
+	panic("Cannot seed a ConstanRand. Inteded to be used by test.")
 }
 
-func newTestSource(constant int32) *testSource {
-	ts := testSource{}
-	ts.Seed(int64(constant) << 32)
-	return &ts
-}
-
-func ConstantRand(constant int32) *common.Rand {
-	return common.New(newTestSource(constant))
+func ConstantRand(constant int32) *rand.Rand {
+	return rand.New(&testSource{int64(constant) << 32})
 }
