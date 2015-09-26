@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/venkatesh-ticketfly/gofaker/common"
+	"../common"
 )
 
 var companySuffixes = []string{"Inc", "and Sons", "LLC", "Group"}

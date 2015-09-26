@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/venkatesh-ticketfly/gofaker/common/test"
+	"../common/test"
 )
 
 func TestZipCodeReturns5DigitFormat(t *testing.T) {

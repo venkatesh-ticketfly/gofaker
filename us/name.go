@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 
-	"github.com/venkatesh-ticketfly/gofaker/common"
+	"../common"
 )
 
 var namePrefixes = []string{"Mr.", "Mrs.", "Ms.", "Miss", "Dr."}
