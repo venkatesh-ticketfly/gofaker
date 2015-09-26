@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unicode"
 
-	"../common"
+	"github.com/venkatesh-ticketfly/gofaker/common"
 )
 
 var domainSuffixes = []string{"com", "org", "us", "ca", "biz", "info"}

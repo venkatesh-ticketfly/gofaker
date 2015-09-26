@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"../common/test"
+	"github.com/venkatesh-ticketfly/gofaker/common/test"
 )
 
 func TestPrefixFirstNameLastNameWhenRandom0(t *testing.T) {
