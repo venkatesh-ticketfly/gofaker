@@ -23,5 +23,6 @@ _testmain.go
 
 bin/
 main
+src/
 
 .project
